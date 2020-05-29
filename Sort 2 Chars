@@ -1,0 +1,13 @@
+public class SortTwoChar {
+
+	public static void main(String[] args) 
+	{	
+		char first = 't';
+		char second = 's';
+		if(first<second)
+			System.out.println(first+","+second);
+		else
+			System.out.println(second+","+first);	
+	}
+
+}
