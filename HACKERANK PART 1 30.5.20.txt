@@ -1,0 +1,93 @@
+       hackerank part 1 30.5.20
+
+
+dam build
+ 
+1.int n = wallPositions.size();
+        int m = wallHeights.size();
+        int[] a=new int[wallPositions.size()];
+        int[] b=new int[wallHeights.size()];
+        for (int i =0; i < wallPositions.size(); i++) 
+            a[i] = wallPositions.get(i); 
+        for (int i =0; i < wallHeights.size(); i++) 
+            b[i] = wallHeights.get(i);     
+        
+    
+        int max = 0;
+
+        for (int i=0; i<n-1; i++) {
+            if (a[i]<a[i+1]-1) {
+                // We have a gap
+                int heightDiff =  Math.abs(b[i+1] - b[i]);
+                int gapLen = a[i+1] - a[i] - 1;
+                int localMax = 0;
+                if (gapLen > heightDiff) {
+                    int low = Math.max(b[i+1], b[i]) + 1;
+                    int remainingGap = gapLen - heightDiff - 1;
+                    localMax = low + remainingGap/2;
+
+                } else {
+                    localMax = Math.min(b[i+1], b[i]) + gapLen;
+                }
+
+                max = Math.max(max, localMax);
+            }
+        }
+
+return max;
+
+
+
+
+
+2. FEWEST COIN
+
+class Result {
+
+/*
+* Complete the 'fewestCoins' function below.
+*
+* The function is expected to return an INTEGER.
+* The function accepts STRING coins as parameter.
+*/
+
+static final int MAX_CHARS = 256;
+public static int fewestCoins(String coins) {
+// Write your code here
+int dcount=0;
+boolean[] visited = new boolean[MAX_CHARS];
+Arrays.fill(visited, false);
+for (int i = 0; i < coins.length(); i++) {
+if (visited[coins.charAt(i)] == false) {
+visited[coins.charAt(i)] = true;
+dcount+=1;
+}
+}
+int start = 0;
+int minlen = Integer.MAX_VALUE;
+int count = 0;
+int[] ccount = new int[MAX_CHARS];
+for (int j = 0; j < coins.length(); j++){
+ccount[coins.charAt(j)]++;
+if (ccount[coins.charAt(j)] == 1)
+count++;
+if (count == dcount) {
+while (ccount[coins.charAt(start)] > 1) {
+if (ccount[coins.charAt(start)] > 1)
+ccount[coins.charAt(start)]--;
+start++;
+}
+int len = j - start + 1;
+if (minlen > len) {
+minlen = len;
+}
+}
+}
+return minlen;
+}
+
+
+
+}
+
+
