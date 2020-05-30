@@ -1,0 +1,97 @@
+
+static char VISITED = 'x';
+
+     
+public static boolean isValid(int i, int j, char[][] painting, char checkChar) 
+{
+        
+int rows = painting.length;
+        
+int cols = painting[0].length;
+
+        
+if (i < 0 || j < 0 || i >= rows || j >= cols || painting[i][j] != checkChar) 
+{
+            
+return false;
+        
+} else 
+{
+            
+return true;
+        
+}
+    }
+    
+ public static void dfs(char[][] painting, int r, int c, char checkChar) 
+{
+        painting[r][c] = VISITED;
+
+        
+// With Diagonals
+        
+// int[] ith = {0, 1, 1, -1, 0, -1, -1, 1};
+        
+// int[] jth = {1, 0, 1, 0, -1, -1, 1, -1};
+
+        
+int[] ith = {0, 1, -1, 0};
+        
+int[] jth = {1, 0, 0, -1};
+        
+for (int k = 0; k < ith.length; k++) 
+{
+            if (isValid(r + ith[k], c + jth[k], painting, checkChar))
+ {
+                dfs(painting, r + ith[k], c + jth[k], checkChar);
+            }
+       
+ }
+
+    }
+    public static int strokesRequired(List<String> picture) 
+{
+    // Write your code here
+       
+ int rows=picture.size();
+        
+int cols=picture.get(0).length();
+        
+char[][] paintings=new char[rows][cols]; 
+
+        
+for(int d=0;d<rows;d++)
+        {
+            
+for(int b=0;b<cols;b++)
+            {
+               
+ paintings[d][b]=picture.get(d).charAt(b);
+            }
+        }
+       
+
+        
+// Start a DFS from every non visited cell
+        
+int numberOfComponents = 0;
+        
+for (int r = 0; r < rows; r++) {
+            
+for (int c = 0; c < cols; c++) {
+                
+if (paintings[r][c] != VISITED) {
+                    
+numberOfComponents++;
+                    
+dfs(paintings, r, c, paintings[r][c]);
+                }
+            }
+        }
+
+       
+return numberOfComponents;
+    }
+}
+
+
