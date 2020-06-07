@@ -1,0 +1,125 @@
+               milestone da 10 prograns
+
+
+1.2nd upper
+
+import java.util.*;
+import.java.io.*;
+class UserMainCode
+{
+public int String getSecondWordInUppercase(String input1) {
+		if (input1.equals("")) 
+    return "LESS";
+		
+		StringBuffer sb = new StringBuffer(input1.trim());
+		
+		try {
+			int si = sb.indexOf(" ");
+			if (si== -1)
+      return "LESS";
+			
+			try {
+				int ei = sb.indexOf(" ", si+1) + 1;
+				return sb.substring(si+1, endIndex).toUpperCase().trim();
+			} catch (StringIndexOutOfBoundsException e) {
+				
+				return sb.substring(si+1).toUpperCase().trim();
+			}
+		} catch (StringIndexOutOfBoundsException e) {
+			
+			return "LESS";
+		}
+	}
+
+
+
+2.most frquent digit
+
+
+import java.io.*;
+import  java.util.*;
+class UserMainCode
+{
+  public int getMostFrequestDigit(int input1, int input2, int input3, int input4) {
+		String str = String.valueOf(input1) + String.valueOf(input2) + String.valueOf(input3) + String.valueOf(input4);
+		int[] digits = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; 
+		
+		for (int i = 0; i < str.length(); i++) {
+			digits[Integer.parseInt(String.valueOf(str.charAt(i)))]++;
+		}
+		
+		int mostFD = 0;
+		
+		for (int i = 0; i <= 9; i++) {
+			mostFD 	= digits[i] >= digits[mostFD] ? i : mostFD;
+		}
+		
+		return mostFD;
+	}
+
+
+
+3.weight of digitds
+
+
+import java.io.*;
+import  java.util.*;
+class UserMainCode
+{
+  public int getWeightOfString(String input1, int input2) {
+		int weight = 0;
+		
+	
+		for (int i = 0; i < input1.length(); i++) {
+			char l = input1.charAt(i);
+			
+			if (input2 == 0) {
+				if (l == 'a' || l== 'e' || l == 'i' || l == 'o' || l == 'u' || 
+					l == 'A' || l == 'E' || l == 'I' || l == 'O' || l == 'U') {
+					continue;
+				}
+			}
+			
+			if (l >= 65 && l <= 90) { 
+				weight += l - 64;
+			
+			} else if (l >= 97 && l <= 122) { 
+				weight += l - 96;
+				
+			} 
+		}
+		
+		return weight;
+	}
+
+
+4.ispalindrome a string
+
+
+import java.io.*;
+import  java.util.*;
+class UserMainCode
+{
+  public int getIsPalindromeString(String input1) {
+		input1 = input1.toLowerCase();
+		int Count = input1.length();
+		boolean palin = true;
+		
+		int r = Count / 2;
+		if (Count % 2 == 0) 
+    {
+    r--;
+    }
+		
+		for (int i = 0; i <= r; i++) {
+			if (input1.charAt(i) != input1.charAt(Count - i - 1)) 
+      {
+      palin= false;
+      }
+		}
+		
+		if (palin == true) 
+    return 2;
+		else 
+    return 1;
+	}

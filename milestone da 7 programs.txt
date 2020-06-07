@@ -1,0 +1,115 @@
+           mile stone day 7 programs
+
+
+
+1. ALL DIGIT COUNT
+
+import java.io.*;
+import  java.util.*;
+class UserMainCode
+{
+  public int allDigitsCount(int input1)
+  {
+    int count=0;
+		while(input1!= 0)
+        {
+          input1=input1/ 10;
+            count++;
+        }
+		return count;
+
+}
+}
+
+
+
+2.SPECIFIC RANGE PRIME
+
+
+import java.io.*;
+import  java.util.*;
+class UserMainCode
+{
+	public int getNoOfPrimesInRange(int input1, int input2) {
+		int pCount = 0;
+		int n = input1;
+		
+		while(true) {
+			boolean Prime = true;
+			
+			for (int i = 2; i < n; i++) {
+				if (n % i == 0) 
+        isPrime = false;
+			}
+			
+			if (Prime) {
+				
+				if (n > 1)
+        pCount++;
+			}
+			
+			n++;
+			if (n > input2) 
+      break;
+		}
+		
+		return pCount;
+	}
+}
+
+
+3.NON REPETAED DIGITS
+
+
+import java.io.*;
+import  java.util.*;
+class UserMainCode
+{
+  public int   getNonRepeatedDigitsCount(int input1) {
+	
+		int Count = 0;   
+		int[] repeat = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		
+		while (input1 != 0) {
+			int digit = input1 % 10;
+			repeat[digit]++;
+			input1/= 10;
+		}
+		
+		for (int i = 0; i < 10; i++) {
+			
+			if (repeat[i] == 1) 
+      Count++;
+		}
+		
+		return Count;
+	}
+}
+
+
+
+4.UNIQE DIGIT
+
+
+import java.io.*;
+import  java.util.*;
+class UserMainCode
+{
+  public int  getUniqueDigitsCount(int input1) {
+		int Count = 0;
+		boolean[] unique= {false, false, false, false, false, false, false, false, false, false};
+		
+		while (input1 != 0) {
+			int digit = input1 % 10;
+			
+			if (unique[digit] == false) {
+				unique[digit] = true;
+				Count++;
+			}
+			
+			number /= 10;
+		}
+		
+		return Count;
+	}
+}

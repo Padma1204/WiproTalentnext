@@ -1,0 +1,133 @@
+   MILESTONE DAY 8
+
+
+1. ODD DIGIT SUM
+
+import java.io.*;
+import  java.util.*;
+class UsermainCode{
+public int OddDigitSum(int input1){
+int rem=0,sum=0;
+		
+		while(input1>0){
+			rem=input1%10;
+			
+			if(rem%2!=0)
+			{
+				sum=sum+rem;
+				
+			}
+			input1=input1/10;
+	}
+			
+			
+		
+		return sum;
+
+		
+		
+	}
+}
+
+
+
+2.SUM OF ALL DIGITS IN N
+
+import java.io.*;
+import  java.util.*;
+class UsermainCode{
+public int AllDigitSum(int input1){
+int rem=0,sum=0,rem1=0,sum1=0;
+		if(input1!=0)
+		{
+			while(input1>0)
+				{
+					rem=input1%10;
+				sum=sum+rem;
+				input1/=10;
+
+				}
+			rem1=sum%10;
+			sum1=rem1+sum1;
+			sum=sum/10;
+			
+		
+		
+			if(input1<0)
+			{
+				rem=input1%10;
+				sum=sum+rem;
+				input1/=10;
+
+				}
+			rem1=sum%10;
+			sum1=rem1+sum1;
+			sum=sum/10;
+			
+		
+		}
+		
+		return sum1;
+		
+		
+
+		
+	}
+}
+
+
+
+3.SUM OF EVEN DIGIT
+
+import java.io.*;
+import  java.util.*;
+class UsermainCode{
+public int EvendigitSum(int input1){
+int rem=0,sum=0;
+		
+		while(input1>0){
+			rem=input1%10;
+			
+			if(rem%2==0)
+			{
+				sum=sum+rem;
+				
+			}
+			input1=input1/10;
+	}
+			
+			
+		
+		return sum;
+
+		
+		
+	}
+}
+4.even odd sum
+
+
+import java.io.*;
+import  java.util.*;
+class UserMainCode{
+public int EvenOddDigitsSum(int input1,string input2){
+int esum = 0,osum = 0,rem;
+		
+		while (input1 != 0) {
+			rem = input1 % 10;
+			
+			if (input2.equals("even") && rem % 2 == 0) 
+				esum =esum+ rem;
+
+			if (input2.equals("odd") && rem % 2 == 1)	
+				osum += rem;
+			
+			input1 /= 10;
+		}
+		
+		if (input2.equals("even"))
+			 return esum;
+		else 
+		return osum;
+	}
+}
