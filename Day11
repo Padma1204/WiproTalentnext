@@ -1,0 +1,202 @@
+1.largest string
+
+ import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+
+
+class Result {
+
+    /*
+     * Complete the 'getLargestString' function below.
+     *
+     * The function is expected to return a STRING.
+     * The function accepts following parameters:
+     *  1. STRING s
+     *  2. INTEGER k
+     */
+
+    public static String getLargestString(String s, int k) {
+    // Write your code here
+
+
+StringBuilder builder = new StringBuilder(s); // use StringBuilder for memory optimization
+           for (int i=0;i<builder.length();i++) {
+               int foundCount = 0;
+               for (int j=i-1;j>=0;j--) {
+                   if (builder.charAt(i) == builder.charAt(j)) {
+                       foundCount++;
+                       if (foundCount >= k) {
+                           builder.deleteCharAt(i);
+                           i++;
+                           break;
+                       }
+                   } else {
+                       break;
+                   }
+               }
+           }
+           return builder.toString();
+       }
+    }
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String s = bufferedReader.readLine();
+
+        int k = Integer.parseInt(bufferedReader.readLine().trim());
+
+        String result = Result.getLargestString(s, k);
+
+        bufferedWriter.write(result);
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
+
+
+
+2.string reduction
+
+
+
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+
+class Result {
+
+    /*
+     * Complete the 'getMinDeletions' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts STRING s as parameter.
+     */
+     static final int MAX_CHAR = 26; 
+    public static int getMinDeletions(String s) {
+    // Write your code her
+    // recursive brute force
+
+      int i = s.length(); 
+          
+        // If length is more than maximum 
+        // allowed characters, we cannot 
+        // get the required string.  
+        if (i == MAX_CHAR) 
+            return -1; 
+          
+        // Variable to store count of 
+        // distinct characters  
+        int dist_count = 0; 
+        int count[] = new int[MAX_CHAR]; 
+          
+        // To store counts of different 
+        // characters 
+        for(int j = 0; j < MAX_CHAR; j++) 
+            count[j] = 0; 
+          
+        for (int n = 0; n < i; n++) 
+        { 
+            if(count[s.charAt(n)-'a'] == 0) 
+                dist_count++; 
+            count[s.charAt(n)-'a']++; 
+        } 
+          
+        // Answer is, n - number of distinct char 
+        return (i-dist_count); 
+    } 
+    }
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String s = bufferedReader.readLine();
+
+        int result = Result.getMinDeletions(s);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
+
+
+3. circular printer
+
+
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.regex.*;
+
+
+
+class Result {
+
+    /*
+     * Complete the 'getTime' function below.
+     *
+     * The function is expected to return a LONG_INTEGER.
+     * The function accepts STRING s as parameter.
+     */
+
+    public static long getTime(String s) {
+    
+     ArrayList<Integer> c= new ArrayList<Integer>(s.length());
+    long t=0;
+    int a=65;
+    for(int i=0;i<s.length();i++)
+    {
+        c.add((int)s.charAt(i));
+    }
+    for(int i:c)
+    {
+        int temp=Math.abs(a-i);
+        if(temp>13)
+        {
+            temp=Math.abs(temp-26);
+        }
+        t+=temp;
+        a=i;
+    }
+    return t;
+    }
+
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String s = bufferedReader.readLine();
+
+        long result = Result.getTime(s);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
